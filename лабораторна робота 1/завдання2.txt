@@ -1,0 +1,5 @@
+ALTER TABLE book ADD book_author VARCHAR(15);
+ALTER TABLE book MODIFY COLUMN book_author VARCHAR(20);
+ALTER TABLE book DROP COLUMN book_author;
+CREATE UNIQUE INDEX idx_title ON book(name_book DESC);
+ALTER TABLE book DROP INDEX idx_title;
