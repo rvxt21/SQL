@@ -1,0 +1,31 @@
+SELECT * FROM book WHERE price_book=0 OR price_book IS NULL;
+SELECT * FROM book WHERE price_book IS NOT NULL AND tirage IS NULL;
+SELECT * FROM book WHERE date_book IS NULL;
+SELECT * FROM book WHERE DATEDIFF(CURRENT_DATE,date_book)<=365;
+SELECT * FROM book WHERE is_new='Yes' ORDER BY price_book;
+SELECT * FROM book WHERE pages BETWEEN 300 AND 400 ORDER BY name_book;
+SELECT * FROM book WHERE price_book BETWEEN 20 AND 40 ORDER BY date_book DESC;
+SELECT * FROM book ORDER BY name_book ASC, price_book DESC;
+SELECT * FROM book WHERE (price_book)/CAST(pages AS FLOAT)<0.10;
+SELECT LENGTH(name_book) AS 'Кількість символів', UPPER(SUBSTRING(name_book, 20, 20)) AS 'Перші 20' FROM book;
+SELECT CONCAT(LEFT(name_book,10),'...',RIGHT(name_book,10)) AS 'Останні 10і останні 10 символів назви' FROM book;
+SELECT name_book AS 'Назва книги',date_book AS 'Дата видавництва',DAYOFMONTH(date_book) AS 'День',MONTH(date_book) AS 'Місяць',YEAR(date_book) AS 'Рік' FROM book;
+SELECT name_book AS 'Назва книги',date_book AS 'Дата видавництва',DATE_FORMAT(date_book,'%d/%m/%Y') FROM book;
+SELECT code_book AS 'Код книги',price_book AS 'Ціна',price_book*29.37 AS 'Ціна в грн',price_book*0.91 AS 'Ціна в євро',price_book*122.91 AS 'Ціна в рублях' FROM book;
+SELECT code_book AS 'Код книги',price_book AS 'Ціна',TRUNCATE(price_book*29.37,0) AS 'Ціна в грн без копійок',ROUND(price_book*29.37,0) AS 'Ціна в грн округлена' FROM book;
+INSERT INTO book(id_book,
+    code_book,
+    is_new,
+    name_book,
+    price_book,
+    publisher,
+    pages,
+    book_format,
+    date_book,
+    tirage,
+    book_topic,
+    category) VALUES('7851','502','Yes','Нейронні мережі','26.14','Київський унівеститет ім.Тараса Шевченка','159','70x100/16','2022-01-01','Київське видання','','Програмування');
+INSERT INTO book(id_book, code_book, name_book, price_book, publisher) VALUE(01, 452, 'Математична статистика та теорія ймовірностей', 14.0,'Україна');
+DELETE FROM book WHERE YEAR(date_book)<1990;
+UPDATE book SET date_book=CURRENT_DATE WHERE date_book IS NULL;
+UPDATE book SET is_new='Yes' WHERE YEAR(date_book)>2005;
