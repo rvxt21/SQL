@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg
+PUBLIC "-//W3C//DTD SVG 1.1//EN"
+       "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg viewBox="447 478 1057 788" width="610px" height="310px" xmlns="http://www.w3.org/2000/svg" version="1.1">
+   <line x1="778" y1="625" x2="788" y2="625" style="stroke:#c00;stroke-width:1;"/>
+   <line x1="912" y1="530" x2="922" y2="530" style="stroke:#c00;stroke-width:1;"/>
+   <line x1="788" y1="625" x2="912" y2="530" style="stroke:#c00;stroke-width:1;"/>
+   <line x1="785.5" y1="625" x2="781.96446609407" y2="628.53553390593" style="stroke:#c00;stroke-width:2;"/>
+   <line x1="785.5" y1="625" x2="781.96446609407" y2="621.46446609407" style="stroke:#c00;stroke-width:2;"/>
+   <line x1="917" y1="530" x2="913.46446609407" y2="533.53553390593" style="stroke:#c00;stroke-width:2;"/>
+   <line x1="917" y1="530" x2="913.46446609407" y2="526.46446609407" style="stroke:#c00;stroke-width:2;"/>
+   <line x1="683" y1="665" x2="673" y2="665" style="stroke:#cb0;stroke-width:1;"/>
+   <line x1="580" y1="523" x2="570" y2="523" style="stroke:#cb0;stroke-width:1;"/>
+   <line x1="673" y1="665" x2="580" y2="523" style="stroke:#cb0;stroke-width:1;"/>
+   <line x1="675.5" y1="665" x2="679.03553390593" y2="668.53553390593" style="stroke:#cb0;stroke-width:2;"/>
+   <line x1="675.5" y1="665" x2="679.03553390593" y2="661.46446609407" style="stroke:#cb0;stroke-width:2;"/>
+   <line x1="575" y1="523" x2="578.53553390593" y2="526.53553390593" style="stroke:#cb0;stroke-width:2;"/>
+   <line x1="575" y1="523" x2="578.53553390593" y2="519.46446609407" style="stroke:#cb0;stroke-width:2;"/>
+   <line x1="778" y1="725" x2="788" y2="725" style="stroke:#b0b;stroke-width:1;"/>
+   <line x1="897" y1="724" x2="907" y2="724" style="stroke:#b0b;stroke-width:1;"/>
+   <line x1="788" y1="725" x2="897" y2="724" style="stroke:#b0b;stroke-width:1;"/>
+   <line x1="785.5" y1="725" x2="781.96446609407" y2="728.53553390593" style="stroke:#b0b;stroke-width:2;"/>
+   <line x1="785.5" y1="725" x2="781.96446609407" y2="721.46446609407" style="stroke:#b0b;stroke-width:2;"/>
+   <line x1="902" y1="724" x2="898.46446609407" y2="727.53553390593" style="stroke:#b0b;stroke-width:2;"/>
+   <line x1="902" y1="724" x2="898.46446609407" y2="720.46446609407" style="stroke:#b0b;stroke-width:2;"/>
+   <line x1="683" y1="745" x2="673" y2="745" style="stroke:#0bf;stroke-width:1;"/>
+   <line x1="588" y1="743" x2="578" y2="743" style="stroke:#0bf;stroke-width:1;"/>
+   <line x1="673" y1="745" x2="588" y2="743" style="stroke:#0bf;stroke-width:1;"/>
+   <line x1="675.5" y1="745" x2="679.03553390593" y2="748.53553390593" style="stroke:#0bf;stroke-width:2;"/>
+   <line x1="675.5" y1="745" x2="679.03553390593" y2="741.46446609407" style="stroke:#0bf;stroke-width:2;"/>
+   <line x1="583" y1="743" x2="586.53553390593" y2="746.53553390593" style="stroke:#0bf;stroke-width:2;"/>
+   <line x1="583" y1="743" x2="586.53553390593" y2="739.46446609407" style="stroke:#0bf;stroke-width:2;"/>
+   <rect width="116" height="20" x="462" y="713" style="fill:#007;stroke:black;"/>
+   <text width="116" height="20" x="467" y="727" style="fill:#fff;" font-family="Arial" font-size="16px"> categories</text>
+   <rect width="116" height="20" x="462" y="733" style="fill:#aea;stroke:black;"/>
+   <text width="116" height="20" x="467" y="747" style="fill:black;" font-family="Arial" font-size="16px">id_category</text>
+   <rect width="116" height="20" x="462" y="753" style="fill:none;stroke:black;"/>
+   <text width="116" height="20" x="467" y="767" style="fill:black;" font-family="Arial" font-size="16px">category_name</text>
+   <rect width="100" height="20" x="470" y="493" style="fill:#007;stroke:black;"/>
+   <text width="100" height="20" x="475" y="507" style="fill:#fff;" font-family="Arial" font-size="16px"> formats</text>
+   <rect width="100" height="20" x="470" y="513" style="fill:#aea;stroke:black;"/>
+   <text width="100" height="20" x="475" y="527" style="fill:black;" font-family="Arial" font-size="16px">id_format</text>
+   <rect width="100" height="20" x="470" y="533" style="fill:none;stroke:black;"/>
+   <text width="100" height="20" x="475" y="547" style="fill:black;" font-family="Arial" font-size="16px">format_name</text>
+   <rect width="95" height="20" x="683" y="495" style="fill:#007;stroke:black;"/>
+   <text width="95" height="20" x="688" y="509" style="fill:#fff;" font-family="Arial" font-size="16px"> newbook</text>
+   <rect width="95" height="20" x="683" y="515" style="fill:#aea;stroke:black;"/>
+   <text width="95" height="20" x="688" y="529" style="fill:black;" font-family="Arial" font-size="16px">id_book</text>
+   <rect width="95" height="20" x="683" y="535" style="fill:none;stroke:black;"/>
+   <text width="95" height="20" x="688" y="549" style="fill:black;" font-family="Arial" font-size="16px">code_book</text>
+   <rect width="95" height="20" x="683" y="555" style="fill:none;stroke:black;"/>
+   <text width="95" height="20" x="688" y="569" style="fill:black;" font-family="Arial" font-size="16px">is_new</text>
+   <rect width="95" height="20" x="683" y="575" style="fill:none;stroke:black;"/>
+   <text width="95" height="20" x="688" y="589" style="fill:black;" font-family="Arial" font-size="16px">name_book</text>
+   <rect width="95" height="20" x="683" y="595" style="fill:none;stroke:black;"/>
+   <text width="95" height="20" x="688" y="609" style="fill:black;" font-family="Arial" font-size="16px">price_book</text>
+   <rect width="95" height="20" x="683" y="615" style="fill:none;stroke:black;"/>
+   <text width="95" height="20" x="688" y="629" style="fill:black;" font-family="Arial" font-size="16px">publisher</text>
+   <rect width="95" height="20" x="683" y="635" style="fill:none;stroke:black;"/>
+   <text width="95" height="20" x="688" y="649" style="fill:black;" font-family="Arial" font-size="16px">pages</text>
+   <rect width="95" height="20" x="683" y="655" style="fill:none;stroke:black;"/>
+   <text width="95" height="20" x="688" y="669" style="fill:black;" font-family="Arial" font-size="16px">book_format</text>
+   <rect width="95" height="20" x="683" y="675" style="fill:none;stroke:black;"/>
+   <text width="95" height="20" x="688" y="689" style="fill:black;" font-family="Arial" font-size="16px">date_book</text>
+   <rect width="95" height="20" x="683" y="695" style="fill:none;stroke:black;"/>
+   <text width="95" height="20" x="688" y="709" style="fill:black;" font-family="Arial" font-size="16px">tirage</text>
+   <rect width="95" height="20" x="683" y="715" style="fill:none;stroke:black;"/>
+   <text width="95" height="20" x="688" y="729" style="fill:black;" font-family="Arial" font-size="16px">book_topic</text>
+   <rect width="95" height="20" x="683" y="735" style="fill:none;stroke:black;"/>
+   <text width="95" height="20" x="688" y="749" style="fill:black;" font-family="Arial" font-size="16px">category</text>
+   <rect width="120" height="20" x="922" y="500" style="fill:#007;stroke:black;"/>
+   <text width="120" height="20" x="927" y="514" style="fill:#fff;" font-family="Arial" font-size="16px"> publishers</text>
+   <rect width="120" height="20" x="922" y="520" style="fill:#aea;stroke:black;"/>
+   <text width="120" height="20" x="927" y="534" style="fill:black;" font-family="Arial" font-size="16px">id_publisher</text>
+   <rect width="120" height="20" x="922" y="540" style="fill:none;stroke:black;"/>
+   <text width="120" height="20" x="927" y="554" style="fill:black;" font-family="Arial" font-size="16px">publisher_name</text>
+   <rect width="89" height="20" x="907" y="694" style="fill:#007;stroke:black;"/>
+   <text width="89" height="20" x="912" y="708" style="fill:#fff;" font-family="Arial" font-size="16px"> topics</text>
+   <rect width="89" height="20" x="907" y="714" style="fill:#aea;stroke:black;"/>
+   <text width="89" height="20" x="912" y="728" style="fill:black;" font-family="Arial" font-size="16px">id_topic</text>
+   <rect width="89" height="20" x="907" y="734" style="fill:none;stroke:black;"/>
+   <text width="89" height="20" x="912" y="748" style="fill:black;" font-family="Arial" font-size="16px">topic_name</text>
+</svg>
