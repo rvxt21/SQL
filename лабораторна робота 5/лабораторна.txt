@@ -39,7 +39,7 @@ CREATE INDEX idx_title ON
 INSERT INTO Formats(format_name) VALUES ('n/m'), ('70х100/16'), ('84х108/16'), ('60х88/16'),('84x100/16'),('60x90\16'),('60x84/16');
 INSERT INTO Publishers(publisher_name) VALUES 
   ('n/m'),
-  ('BHV С.-Петербург'),
+  ('Видавнича група BHV'),
   ('Вильямс'),
   ('Питер'),
   ('МикроАрт'),
