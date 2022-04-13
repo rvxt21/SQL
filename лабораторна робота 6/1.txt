@@ -1,5 +1,5 @@
 1. Вивести значення наступних колонок: назва книги, ціна, назва видавництва. Використовувати внутрішнє з'єднання, застосовуючи where.
-SELECT newbook.name_book, newbook.price_book, publishers.publisher_name FROM NewBook,Publishers WHERE newbook.publisher=publishers.id_publisher;
+SELECT newbook.name_book AS 'Назва книги', newbook.price_book AS 'Ціна книги', publishers.publisher_name AS 'Видавництво' FROM NewBook,Publishers WHERE newbook.publisher=publishers.id_publisher;
 
 2. Вивести значення наступних колонок: назва книги, назва категорії. Використовувати внутрішнє з'єднання, застосовуючи inner join.
 SELECT newbook.name_book AS 'Назва книги',categories.category_name AS 'Категорія' FROM newbook INNER JOIN categories ON newbook.category=categories.id_category;
