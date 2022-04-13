@@ -1,3 +1,9 @@
+3.    Скласти SQL-script, який виконує:
+   a. Додавання в таблицю нового текстового поля "Автор", розміром 15 символів
+   b. Збільшення розміру текстового поля "Автор" до 20 символів
+   c. Видалення текстового поля "Автор" з таблиці
+   d. Зміна порядку сортування індексу і призначення його унікальності
+   e. Видалення індексу
 ALTER TABLE book ADD book_author VARCHAR(15);
 ALTER TABLE book MODIFY COLUMN book_author VARCHAR(20);
 ALTER TABLE book DROP COLUMN book_author;
