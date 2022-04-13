@@ -1,18 +1,18 @@
 DROP DATABASE IF EXISTS library;
 CREATE DATABASE IF NOT EXISTS library;
 CREATE TABLE NewBook(
-    	id_book INT(20) NOT NULL PRIMARY KEY,
-	code_book INT(10) NOT NULL DEFAULT 0,
-	is_new VARCHAR(3) NOT NULL DEFAULT 'No',
-	name_book VARCHAR(50) NOT NULL DEFAULT ' ',
-	price_book FLOAT(5, 2) NOT NULL,
-	publisher SMALLINT(2) NOT NULL DEFAULT 0,
-	pages INT(11) DEFAULT NULL,
-	book_format SMALLINT(2) DEFAULT NULL,
-	date_book DATE DEFAULT NULL,
-	tirage INT(11) DEFAULT NULL,
-	book_topic SMALLINT(3) DEFAULT NULL,
-	category SMALLINT(3) DEFAULT NULL
+id_book INT(20) NOT NULL PRIMARY KEY,
+code_book INT(10) NOT NULL DEFAULT 0,
+is_new VARCHAR(3) NOT NULL DEFAULT 'No',
+name_book VARCHAR(50) NOT NULL DEFAULT ' ',
+price_book FLOAT(5, 2) NOT NULL,
+publisher SMALLINT(2) NOT NULL DEFAULT 0,
+pages INT(11) DEFAULT NULL,
+book_format SMALLINT(2) DEFAULT NULL,
+date_book DATE DEFAULT NULL,
+tirage INT(11) DEFAULT NULL,
+book_topic SMALLINT(3) DEFAULT NULL,
+category SMALLINT(3) DEFAULT NULL
 ) ENGINE=INNODB CHARACTER SET='UTF8MB4';
 CREATE INDEX idx_title ON
     library.NewBook(name_book);
@@ -36,7 +36,18 @@ ALTER TABLE Newbook ADD FOREIGN KEY (publisher) REFERENCES Publishers(id_publish
 ALTER TABLE Newbook ADD FOREIGN KEY (book_format) REFERENCES Formats(id_format);
 ALTER TABLE Newbook ADD FOREIGN KEY (book_topic) REFERENCES Topics(id_topic);
 ALTER TABLE Newbook ADD FOREIGN KEY (category) REFERENCES Categories(id_category);
+<<<<<<< HEAD
 INSERT INTO Formats(format_name) VALUES ('n/m'), ('70х100/16'), ('84х108/16'), ('60х88/16'),('84x100/16'),('60x90\16'),('60x84/16');
+=======
+INSERT INTO Formats(format_name) VALUES 
+('n/m'), 
+('70х100/16'), 
+('84х108/16'), 
+('60х88/16'),
+('84x100/16'),
+('60x90\16'),
+('60x84/16');
+>>>>>>> a384e2ab828901cb61690bce850907ca0d98d10f
 INSERT INTO Publishers(publisher_name) VALUES 
   ('n/m'),
   ('Вильямс'),
@@ -67,18 +78,18 @@ INSERT INTO Topics(topic_name) VALUES
   ('Операційні системи'),
   ('Програмування');
 INSERT INTO NewBook (
-    id_book,
-    code_book,
-    is_new,
-    name_book,
-    price_book,
-    publisher,
-    pages,
-    book_format,
-    date_book,
-    tirage,
-    book_topic,
-    category) 
+   id_book,
+   code_book,
+   is_new,
+   name_book,
+   price_book,
+   publisher,
+   pages,
+   book_format,
+   date_book,
+   tirage,
+   book_topic,
+   category) 
 VALUES
 (
     2,
