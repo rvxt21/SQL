@@ -14,6 +14,8 @@ CREATE TABLE NewBook(
 	book_topic SMALLINT(3) DEFAULT NULL,
 	category SMALLINT(3) DEFAULT NULL
 ) ENGINE=INNODB CHARACTER SET='UTF8MB4';
+CREATE INDEX idx_title ON
+    library.NewBook(name_book);
 CREATE TABLE Publishers(
     id_publisher SMALLINT(2) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     publisher_name VARCHAR(20) UNIQUE NOT NULL
@@ -34,8 +36,6 @@ ALTER TABLE Newbook ADD FOREIGN KEY (publisher) REFERENCES Publishers(id_publish
 ALTER TABLE Newbook ADD FOREIGN KEY (book_format) REFERENCES Formats(id_format);
 ALTER TABLE Newbook ADD FOREIGN KEY (book_topic) REFERENCES Topics(id_topic);
 ALTER TABLE Newbook ADD FOREIGN KEY (category) REFERENCES Categories(id_category);
-CREATE INDEX idx_title ON
-    library.NewBook(name_book);
 INSERT INTO Formats(format_name) VALUES ('n/m'), ('70х100/16'), ('84х108/16'), ('60х88/16'),('84x100/16'),('60x90\16'),('60x84/16');
 INSERT INTO Publishers(publisher_name) VALUES 
   ('n/m'),
