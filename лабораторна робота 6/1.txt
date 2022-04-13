@@ -49,10 +49,10 @@ SELECT * FROM publishers Where( SELECT MIN(pages) FROM newbook WHERE newbook.pub
 SELECT * FROM categories WHERE(SELECT COUNT(*) FROM newbook WHERE newbook.category=categories.id_category)>3
 
 17.    Вивести список книг видавництва 'BHV', якщо в списку є хоча б одна книга цього видавництва. Використовувати exists.
-SELECT * FROM newbook WHERE EXISTS (SELECT * FROM publishers WHERE publishers.publisher_name = 'BHV С.-Петербург' AND publishers.id_publisher= newbook.publisher);
+SELECT * FROM newbook WHERE EXISTS (SELECT * FROM publishers WHERE publishers.publisher_name = 'Видавнича група BHV' AND publishers.id_publisher= newbook.publisher);
 
 18.    Вивести список книг видавництва 'BHV', якщо в списку немає жодної книги цього видавництва. Використовувати not exists.
-SELECT * FROM newbook WHERE NOT EXISTS (SELECT * FROM publishers WHERE publishers.publisher_name = 'BHV С.-Петербург' AND publishers.id_publisher= newbook.publisher);
+SELECT * FROM newbook WHERE NOT EXISTS (SELECT * FROM publishers WHERE publishers.publisher_name = 'Видавнича група BHV' AND publishers.id_publisher= newbook.publisher);
 
 19.    Вивести відсортований загальний список назв тем і категорій. Використовувати union.
 ((SELECT * FROM topics) UNION (SELECT * FROM categories)) ORDER BY topic_name;
