@@ -1,21 +1,40 @@
 SELECT id_book AS 'Номер',code_book AS 'Код книги',is_new AS 'Новинка', name_book AS 'Назва книги',price_book AS 'Ціна',publisher 'Видавництво'
 FROM book;
+
 SELECT * FROM book;
+
 SELECT 	code_book AS 'Код',name_book AS 'Назва', is_new AS 'Новинка', pages AS 'Сторінки',price_book AS 'Ціна',id_book AS 'Номер' FROM book;
+
 SELECT * FROM book LIMIT 10;
+
 SELECT TOP 10 PERCENT * FROM book;
+
 SELECT DISTINCT code_book FROM book;
+
 SELECT code_book AS 'Код', name_book AS 'Назва',publisher AS 'Видавництво',price_book AS 'Ціна' FROM book WHERE is_new='Yes'; 
+
 SELECT code_book AS 'Код', name_book AS 'Назва',publisher AS 'Видавництво',price_book AS 'Ціна' FROM book WHERE is_new='Yes' AND price_book BETWEEN 20 AND 30; 
+
 SELECT code_book AS 'Код', name_book AS 'Назва',publisher AS 'Видавництво',price_book AS 'Ціна' FROM book WHERE is_new='Yes' AND price_book NOT BETWEEN 20 AND 30; 
+
 SELECT code_book AS 'Код', name_book AS 'Назва',publisher AS 'Видавництво',price_book AS 'Ціна' FROM book WHERE pages BETWEEN 300 AND 400 AND price_book BETWEEN 20 AND 30; 
+
 SELECT code_book AS 'Код', name_book AS 'Назва',publisher AS 'Видавництво',price_book AS 'Ціна',date_book AS 'Дата' FROM book WHERE date_book BETWEEN CAST('01/01/2000' AS DATE) AND CAST('29/02/2000' AS DATE) OR date_book BETWEEN CAST('01/12/2000' AS DATE) AND CAST('31/12/2000' AS DATE);
+
 SELECT * FROM book WHERE code_book IN(5110, 5141, 4985, 4241);
+
 SELECT * FROM book WHERE YEAR(date_book) IN(1999,2001,2003,2005);
+
 SELECT * FROM book WHERE name_book>='А' AND name_book<='К';
+
 SELECT * FROM book WHERE name_book LIKE 'АПП%' AND date_book LIKE '2000%' AND price_book<20;
+
 SELECT * FROM book WHERE name_book LIKE 'АПП%Е' AND date_book BETWEEN CAST('2000-01-01' AS DATE) AND CAST('2000-06-30' AS DATE);
+
 SELECT * FROM book WHERE name_book LIKE '%Microsoft%' AND name_book NOT LIKE '%Windows%';
+
 SELECT * FROM book WHERE name_book RLIKE '[0-9]';
+
 SELECT * FROM book WHERE name_book RLIKE '.*[0-9].*[0-9].*[0-9].*';
+
 SELECT * FROM book WHERE name_book RLIKE '.*[0-9].*[0-9].*[0-9].*[0-9].*[0-9].*' AND name_book NOT RLIKE '.*[0-9].*[0-9].*[0-9].*[0-9].*[0-9].*[0-9].*';
