@@ -79,3 +79,11 @@ SELECT newbook.id_book AS 'ID',newbook.code_book AS 'Код',newbook.is_new AS '
 CALL proc13('Видавнича група BHV');
 
 14.    Вивести відсортоване загальний список назв тем і категорій.
+CREATE PROCEDURE proc14()
+((SELECT topics.topic_name FROM topics) UNION (SELECT categories.category_name FROM categories)) ORDER BY topic_name ASC;
+CALL proc14();
+
+15.Вивести відсортований в зворотному порядку загальний список перших слів назв книг і категорій що не повторюються
+CREATE PROCEDURE proc15()
+SELECT DISTINCT name FROM ((SELECT REGEXP_SUBSTR(TRIM(newbook.name_book),'^[^\\s]+') AS name FROM newbook) UNION ALL(SELECT REGEXP_SUBSTR(TRIM(categories.category_name),'^[^\\s]+') AS 'Перше слово назви книги і категорій що не повторюються' FROM categories)) newbook,categories ORDER BY name DESC;
+CALL proc15();
