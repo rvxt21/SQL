@@ -58,3 +58,4 @@ SELECT * FROM newbook WHERE NOT EXISTS (SELECT * FROM publishers WHERE publisher
 ((SELECT * FROM topics) UNION (SELECT * FROM categories)) ORDER BY topic_name;
 
 20.    Вивести відсортований в зворотному порядку загальний список перших слів, назв книг і категорій що не повторюються. Використовувати union.
+SELECT DISTINCT name FROM ((SELECT REGEXP_SUBSTR(TRIM(newbook.name_book),'^[^\\s]+') AS name FROM newbook) UNION ALL(SELECT REGEXP_SUBSTR(TRIM(categories.category_name),'^[^\\s]+') AS 'Перше слово назви книги і категорій що не повторюються' FROM categories)) newbook,categories ORDER BY name DESC;
