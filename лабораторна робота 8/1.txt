@@ -38,7 +38,7 @@ DELIMITER ;
 DELIMITER $$
 CREATE TRIGGER trig4 BEFORE INSERT ON newbook
 FOR EACH ROW
-IF((newbook.publisher=9 AND newbook.tirage<5000) OR (newbook.publisher=5 AND newbook.tirage<10000))
+IF((NEW.publisher=9 AND NEW.tirage<5000) OR (NEW.publisher=5 AND NEW.tirage<10000))
 THEN SIGNAL SQLSTATE '45001' SET MESSAGE_TEXT='Видавництво "BHV" не випускає книги накладом меншим 5000, а видавництво Diasoft - 10000.';
 END IF
 $$
