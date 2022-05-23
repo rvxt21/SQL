@@ -1,5 +1,9 @@
+/* a.    Створення таблиць бази даних. Команди для створення таблиці повинні містити головний ключ, обмеження типу null / not null, default, check, створення зв'язків з умовами посилальної цілісності
+       b.    Завантаження даних в таблиці
+*/
 DROP DATABASE IF EXISTS library;
 CREATE DATABASE IF NOT EXISTS library;
+/*Нова основна таблиця*/
 CREATE TABLE NewBook(
     	id_book INT(20) NOT NULL PRIMARY KEY,
 	code_book INT(10) NOT NULL DEFAULT 0,
@@ -16,6 +20,7 @@ CREATE TABLE NewBook(
 ) ENGINE=INNODB CHARACTER SET='UTF8MB4';
 CREATE INDEX idx_title ON
     library.NewBook(name_book);
+/* Допоміжні таблиці,які містять видання,формати,теми, категорії. Створення цих таблиць*/
 CREATE TABLE Publishers(
     id_publisher SMALLINT(2) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     publisher_name VARCHAR(20) UNIQUE NOT NULL
@@ -32,12 +37,18 @@ CREATE TABLE Categories(
     id_category SMALLINT(3) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     category_name VARCHAR(25) UNIQUE NOT NULL
 );
+
+/*Додавання ключів*/
+
 ALTER TABLE Newbook ADD FOREIGN KEY (publisher) REFERENCES Publishers(id_publisher);
 ALTER TABLE Newbook ADD FOREIGN KEY (book_format) REFERENCES Formats(id_format);
 ALTER TABLE Newbook ADD FOREIGN KEY (book_topic) REFERENCES Topics(id_topic);
 ALTER TABLE Newbook ADD FOREIGN KEY (category) REFERENCES Categories(id_category);
+
+/*Додавання даних у допоміжні таблиці*/
+
 INSERT INTO Formats(format_name) VALUES 
-('n/m'), 
+('n/m'), /*не вказано*/
 ('70х100/16'), 
 ('84х108/16'), 
 ('60х88/16'),
@@ -45,7 +56,7 @@ INSERT INTO Formats(format_name) VALUES
 ('60x90\16'),
 ('60x84/16');
 INSERT INTO Publishers(publisher_name) VALUES 
-  ('n/m'),
+  ('n/m'),/*не вказано*/
   ('Вильямс'),
   ('Питер'),
   ('МикроАрт'),
@@ -58,7 +69,7 @@ INSERT INTO Publishers(publisher_name) VALUES
   ('Університет `Україна`'),
   ('Вінниця: ВДТУ');
 INSERT INTO Categories(category_name) VALUES 
-  ('n/m'),
+  ('n/m'), /*не вказано*/
   ('Підручники'),
   ('Апаратні засоби ПК'),
   ('Захист і безпека ПК'),
@@ -73,6 +84,9 @@ INSERT INTO Topics(topic_name) VALUES
   ('Використання ПК в цілому'),
   ('Операційні системи'),
   ('Програмування');
+
+/*Завантаження даних в таблицю NewBook*/
+
 INSERT INTO NewBook (
    id_book,
    code_book,
