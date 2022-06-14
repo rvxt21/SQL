@@ -1,5 +1,8 @@
+					/Видалення бази даних, якщо вона вже існує, створення бази даних,якщо вона не існує/
 DROP DATABASE IF EXISTS university;
 CREATE DATABASE IF NOT EXISTS university;
+					/Створення таблиці Студент, що має наступні властивості:його код у базі даних,ім'я,прізвище,по батькові,
+					номер групи,курс,спеціальність,факультет,дата вступу/
 CREATE TABLE Students(
     student_id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(18) NOT NULL DEFAULT '',
@@ -11,6 +14,8 @@ CREATE TABLE Students(
     faculty INT(3) NOT NULL,
     date_postupleniya DATE NOT NULL
 );
+					/Створюємо таблицю, де будуть зберігатись відомості про успішність студентів: номер заліковки=код студента,номер семестру,дисципліну,
+					оцінка( від 0 до 100 балів), дата екзамену,викладач=код викладача/
 CREATE TABLE Academic_Perfomance(
     book_id INT PRIMARY KEY,
     semestr INT(3) NOT NULL DEFAULT 1,
@@ -18,27 +23,32 @@ CREATE TABLE Academic_Perfomance(
    	mark INT(3) NOT NULL,
     date_exam DATE NOT NULL,
     teacher INT NOT NULL);
+					/Створюємо таблицю викладач, де зберігаються відомості про викладача: код викладача, ім'я,прізвище,по батькові,
+					факультет, предмет/
 CREATE TABLE Teachers(
     teacher_id INT PRIMARY KEY AUTO_INCREMENT,
+    code_teach INT(5) UNIQUE NOT NULL,
     name_t VARCHAR(20) NOT NULL DEFAULT '',
     surname_t VARCHAR(50) NOT NULL DEFAULT '',
     second_name VARCHAR(50) NOT NULL DEFAULT '',
-    faculty_t INT(3) NOT NULL,
-    subject INT(3) NOT NULL);
+    faculty_t INT(3) NOT NULL);
+					/Допоміжна таблиця, у якій містяться спеціальності та їх код(як у системі ЄДБО,наприклад 122-Комп'ютерні науки)/
 CREATE TABLE Speciality(
     id_speciality INT(3) PRIMARY KEY AUTO_INCREMENT,
     speciality_name VARCHAR(20) NOT NULL UNIQUE DEFAULT '');
+					/Допоміжна таблиця факультет, у якій містяться факультети/
 CREATE TABLE Faculty(
     id_faculty INT(3) PRIMARY KEY AUTO_INCREMENT,
     name_faculty VARCHAR(30) NOT NULL UNIQUE DEFAULT '');
+					/Допоміжна таблиця предмет, де зберігаються відомості про дисципліни/
 CREATE TABLE Subject(
     id_subject INT(3) PRIMARY KEY AUTO_INCREMENT,
     subject_name VARCHAR(100) NOT NULL);
 ALTER TABLE students ADD FOREIGN KEY(faculty) REFERENCES Faculty(id_faculty);
 ALTER TABLE students ADD FOREIGN KEY(specialyty) REFERENCES Speciality(id_speciality);
-ALTER TABLE students ADD FOREIGN KEY(student_id) REFERENCES Academic_Perfomance(book_id);
+ALTER TABLE  Academic_Perfomance ADD FOREIGN KEY(book_id) REFERENCES students(student_id);
 ALTER TABLE Academic_Perfomance ADD FOREIGN KEY(subject) REFERENCES Subject(id_subject);
-ALTER TABLE teachers ADD FOREIGN KEY(subject_t) REFERENCES Subject(id_subject);
+							/Додаємо код та назву спеціальностей у таблицю Speciality/
 INSERT INTO Speciality(id_speciality,speciality_name) VALUES
   (122,'Комп`ютені науки'),
   (121,'Інженерія програмного запезпечення'),
@@ -64,8 +74,9 @@ INSERT INTO Speciality(id_speciality,speciality_name) VALUES
   (015,'Професійна освіта'),
   (053,'Психологія'),
   (281,'Публічне управління та адміністрування');
+							/Додаємо відомості про факультети у таблицю Faculty, код факультету буде автоматично рахуватись/
 INSERT INTO Faculty(name_faculty) VALUES
-	('Комп`ютерних наук, фізики та математики'),
+    ('Комп`ютерних наук, фізики та математики'),
     ('Факультет біології, географії та екології'),
     ('Педагогічний факультет'),
     ('Факультет бізнесу і права'),
@@ -74,12 +85,13 @@ INSERT INTO Faculty(name_faculty) VALUES
     ('Медичний факультет'),
     ('Факультет психології, історії та соціології'),
     ('Факультет фізичного виховання та спорту');
+							/Додаємо відомості про предмети у таблицю Subject/
 INSERT INTO Subject(subject_name) VALUES
-	('Математичний аналіз'),
+    ('Математичний аналіз'),
     ('Лінійна Алгебра'),
     ('Біологія'),
     ('Право'),
-	('Українська мова та література'),
+    ('Українська мова та література'),
     ('Філософія'),
     ('Фізичне виховання'),
     ('Медицина'),
@@ -90,5 +102,28 @@ INSERT INTO Subject(subject_name) VALUES
     ('Бази даних'),
     ('Анатомія'),
     ('Педагогіка'),
-	('Журналістика'),
+    ('Журналістика'),
     ('Лінгвістика');
+							/Додаємо записи у таблицю Students/
+INSERT INTO students(student_id,name,surname,second_name,group_,course,specialyty,faculty,date_postupleniya) VALUES 
+(1,'Іван','Довгань','Миколайович',131,1,122,1,'20-08-2021'),
+(2,'Марія','Скоропай','Володимірівна',241,2,121,1,'15-08-2020'),
+(3,'Степан','Назаренко','Олексійович',350,3,91,2,'09-08-2019'),
+(4,'Миколай','Шубайко','Степанович',151,1,32,8,'10-08-2021'),
+(5,'Анастасія','Вінова','Анатоліївна',231,2,122,1,'08-08-2021'),
+(6,'Альона','Клименко','Станіславівна',481,4,81,4,'07-08-2018'),
+(7,'Мирослава','Нагній','Іванівна',191,1,222,7,'10-06-2021');
+INSERT INTO academic_perfomance(book_id,semestr,subject,mark,date_exam,teacher) VALUES
+
+ALTER TABLE teachers ADD FOREIGN KEY(faculty_t) REFERENCES Faculty(id_faculty);
+							/Додаємо записи у таблицю Teachers/
+INSERT INTO Teachers(code_teach,name_t,surname_t,second_name,faculty_t) VALUES
+(1234,'Іванна','Стефанюк','Миколаївна',1),
+(1273,'Валентин','Гавриш','Олексійович',2),
+(2453,'Марія','Стефанівська','Степанівна',4),
+(7821,'Степан','Тарасенко','Валентинович',3),
+(6721,'Микола','Довгунов','Валерійович',6),
+(2671,'Анастасія','Косяк','Олександрівна',7),
+(2781,'Анна','Копайенко','Станіславівна',8);
+							/Запроси по таблицях/
+SELECT * FROM teachers;  //вивести всі записи з таблиці Викладачі
