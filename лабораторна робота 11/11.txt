@@ -150,6 +150,9 @@ CALL All_info_teachers();
 
 SELECT * from teachers WHERE faculty_t = (SELECT id_faculty FROM faculty WHERE faculty.name_faculty = '%Комп`ютерних%');
 
+SELECT students.student_id,students.code_student,students.name AS 'Ім`я',students.surname AS 'Прізвище',
+students.second_name AS 'По батькові',students.group_ AS 'Номер групи',students.course,speciality.speciality_name AS 'Назва спеціальності',faculty.name_faculty AS 'Факультет',students.date_postupleniya AS 'Дата вступу',students.form_st FROM students INNER JOIN speciality ON students.specialyty=speciality.id_speciality INNER JOIN faculty ON students.faculty=faculty.id_faculty;
+
 DELIMITER $$
 CREATE TRIGGER trig1 AFTER INSERT ON teachers
 FOR EACH ROW
@@ -172,3 +175,29 @@ BEGIN
 END
 $$
 DELIMITER ;
+
+CREATE PROCEDURE proc1()
+SELECT DISTINCT student1.name AS 'Студент 1',student2.name AS 'Студент 2' FROM students student1 JOIN students student2 ON student1.group_=student2.group_ AND student1.student_id!=student2.student_id;
+CALL proc1(); //пари студентів, що навчаються в одній групі
+
+DELIMITER $$
+CREATE TRIGGER trig3 BEFORE DELETE ON teachers
+FOR EACH ROW
+BEGIN
+	IF ((CURRENT_USER != 'dbo') AND (COLUMNS_UPDATED() & 1)!=0)
+	THEN 
+	SIGNAL SQLSTATE '45001' SET MESSAGE_TEXT='Ви не користувач dbo.Лише цей користувач може видаляти дані про викладачів.';
+	END IF;
+END
+$$
+DELIMITER ;
+
+CREATE PROCEDURE Students_In_Group(in group_n INT(3))
+SELECT students.student_id,students.code_student,students.name AS 'Ім`я',students.surname AS 'Прізвище',
+students.second_name AS 'По батькові',students.group_ AS 'Номер групи',students.course,speciality.speciality_name AS 'Назва спеціальності',faculty.name_faculty AS 'Факультет',students.date_postupleniya AS 'Дата вступу',students.form_st FROM students INNER JOIN speciality ON students.specialyty=speciality.id_speciality INNER JOIN faculty ON students.faculty=faculty.id_faculty WHERE students.group_=group_n;
+CALL Students_In_Group(131);
+
+CREATE FUNCTION count_of_students(year INT)
+RETURNS DOUBLE
+RETURN (SELECT COUNT(students.name) FROM
+students WHERE YEAR(students.date_postupleniya)=year);
