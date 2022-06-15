@@ -2,6 +2,7 @@ DROP DATABASE IF EXISTS university;
 CREATE DATABASE IF NOT EXISTS university;
 CREATE TABLE Students(
     student_id INT PRIMARY KEY AUTO_INCREMENT,
+    code_student INT NOT NULL,
     name VARCHAR(18) NOT NULL DEFAULT '',
     surname VARCHAR(50) NOT NULL DEFAULT '',
     second_name VARCHAR(20) NOT NULL DEFAULT '',
@@ -9,13 +10,14 @@ CREATE TABLE Students(
     course INT NOT NULL,
     specialyty INT(3) NOT NULL,
     faculty INT(3) NOT NULL,
-    date_postupleniya DATE NOT NULL
+    date_postupleniya DATE NOT NULL,
+    form_st CHAR(6) DEFAULT 'Денна'
 );
 CREATE TABLE Academic_Perfomance(
     book_id INT PRIMARY KEY,
     semestr INT(3) NOT NULL DEFAULT 1,
     subject INT(3) NOT NULL,
-   	mark INT(3) NOT NULL,
+    mark INT(3) NOT NULL,
     date_exam DATE NOT NULL,
     teacher INT(5) NOT NULL);
 CREATE TABLE Teachers(
@@ -24,7 +26,8 @@ CREATE TABLE Teachers(
     name_t VARCHAR(20) NOT NULL DEFAULT '',
     surname_t VARCHAR(50) NOT NULL DEFAULT '',
     second_name VARCHAR(50) NOT NULL DEFAULT '',
-    faculty_t INT(3) NOT NULL);
+    faculty_t INT(3) NOT NULL,
+    scientific_title INT(3) NOT NULL	);
 CREATE TABLE Speciality(
     id_speciality INT(3) PRIMARY KEY AUTO_INCREMENT,
     speciality_name VARCHAR(20) NOT NULL UNIQUE DEFAULT '');
@@ -33,12 +36,15 @@ CREATE TABLE Faculty(
     name_faculty VARCHAR(30) NOT NULL UNIQUE DEFAULT '');
 CREATE TABLE Subject(
     id_subject INT(3) PRIMARY KEY AUTO_INCREMENT,
-    subject_name VARCHAR(100) NOT NULL);
+    subject_name VARCHAR(100) NOT NULL UNIQUE DEFAULT '');
+CREATE TABLE Scientific_title(
+    id_stitle INT(3) PRIMARY KEY AUTO_INCREMENT,
+    stitle_name VARCHAR(100) NOT NULL UNIQUE DEFAULT '');
 ALTER TABLE students ADD FOREIGN KEY(faculty) REFERENCES Faculty(id_faculty);
 ALTER TABLE students ADD FOREIGN KEY(specialyty) REFERENCES Speciality(id_speciality);
 ALTER TABLE Academic_Perfomance ADD FOREIGN KEY(book_id) REFERENCES students(student_id);
 ALTER TABLE Academic_Perfomance ADD FOREIGN KEY(subject) REFERENCES Subject(id_subject);
-
+ALTER TABLE teachers ADD FOREIGN KEY(scientific_title) REFERENCES scientific_title(id_stitle);
 INSERT INTO Speciality(id_speciality,speciality_name) VALUES
   (122,'Комп`ютені науки'),
   (121,'Інженерія програмного запезпечення'),
@@ -92,11 +98,27 @@ INSERT INTO Subject(subject_name) VALUES
     ('Педагогіка'),
     ('Журналістика'),
     ('Лінгвістика');
-INSERT INTO students(student_id,name,surname,second_name,group_,course,specialyty,faculty,date_postupleniya) VALUES 
-(1,'Іван','Довгань','Миколайович',131,1,122,1,'20-08-2021'),
-(2,'Марія','Скоропай','Володимірівна',241,2,121,1,'15-08-2020'),
-(3,'Степан','Назаренко','Олексійович',350,3,91,2,'09-08-2019'),
-(4,'Миколай','Шубайко','Степанович',151,1,32,8,'10-08-2021'),
-(5,'Анастасія','Вінова','Анатоліївна',231,2,122,1,'08-08-2021'),
-(6,'Альона','Клименко','Станіславівна',481,4,81,4,'07-08-2018'),
-(7,'Мирослава','Нагній','Іванівна',191,1,222,7,'10-06-2021');
+INSERT INTO scientific_title(stitle_name) VALUES
+('Доцент'),
+('Кандидат наук'),
+('Професор'),
+('Асистент'),
+('Старший викладач'),
+('Доктор наук');
+INSERT INTO students(student_id,code_student,name,surname,second_name,group_,course,specialyty,faculty,date_postupleniya,form_st) VALUES 
+(1,1233,'Іван','Довгань','Миколайович',131,1,122,1,'20-08-2021','Денна'),
+(2,2372,'Марія','Скоропай','Володимірівна',241,2,121,1,'15-08-2020','Денна'),
+(3,2583,'Степан','Назаренко','Олексійович',350,3,91,2,'09-08-2019','Денна'),
+(4,0992,'Миколай','Шубайко','Степанович',151,1,32,8,'10-08-2021','Заочна'),
+(5,6281,'Анастасія','Вінова','Анатоліївна',231,2,122,1,'08-08-2021','Денна'),
+(6,5728,'Альона','Клименко','Станіславівна',481,4,81,4,'07-08-2018','Заочна'),
+(7,3892,'Мирослава','Нагній','Іванівна',191,1,222,7,'10-06-2021','Денна'),
+(8,6291,'Анна','Курба','Руславівна',131,1,122,1,'20-08-2021','Денна');
+INSERT INTO Teachers(code_teach,name_t,surname_t,second_name,faculty_t,scientific_title) VALUES
+(1234,'Іванна','Стефанюк','Миколаївна',1,1),
+(1273,'Валентин','Гавриш','Олексійович',2,2),
+(2453,'Марія','Стефанівська','Степанівна',4,3),
+(7821,'Степан','Тарасенко','Валентинович',3,4),
+(6721,'Микола','Довгунов','Валерійович',6,1),
+(2671,'Анастасія','Косяк','Олександрівна',7,2),
+(2781,'Анна','Копайенко','Станіславівна',8,5);
