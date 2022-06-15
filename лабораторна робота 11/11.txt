@@ -144,3 +144,31 @@ SELECT * FROM teachers;  //вивести всі записи з таблиці 
 SELECT teachers.teacher_id AS 'ID Викладача', teachers.name_t AS 'Ім`я', teachers.surname_t AS 'Прізвище',teachers.second_name AS 'По батькові', 
 faculty.name_faculty AS 'Факультет' FROM teachers INNER JOIN faculty ON teachers.faculty_t=faculty.id_faculty;
 
+CREATE PROCEDURE All_info_teachers()
+SELECT teachers.*, faculty.name_faculty, scientific_title.stitle_name FROM teachers INNER JOIN faculty ON teachers.faculty_t=faculty.id_faculty INNER JOIN scientific_title ON teachers.scientific_title=scientific_title.id_stitle;
+CALL All_info_teachers();
+
+SELECT * from teachers WHERE faculty_t = (SELECT id_faculty FROM faculty WHERE faculty.name_faculty = '%Комп`ютерних%');
+
+DELIMITER $$
+CREATE TRIGGER trig1 AFTER INSERT ON teachers
+FOR EACH ROW
+BEGIN
+IF (SELECT COUNT(DISTINCT(teachers.faculty_t)) FROM teachers WHERE NEW.faculty_t=teachers.faculty_t) NOT BETWEEN 1 AND 10
+THEN SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='Кількість факультетів може бути в діапазоні від 1 до 10';
+END IF;
+END;
+$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER trig2 BEFORE DELETE ON students
+FOR EACH ROW
+BEGIN
+	IF ((CURRENT_USER != 'dbo') AND (COLUMNS_UPDATED() & 1)!=0)
+	THEN 
+	SIGNAL SQLSTATE '45001' SET MESSAGE_TEXT='Ви не користувач dbo.Лише цей користувач може видаляти дані про студентів.';
+	END IF;
+END
+$$
+DELIMITER ;

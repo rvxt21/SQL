@@ -27,7 +27,7 @@ CREATE TABLE Teachers(
     surname_t VARCHAR(50) NOT NULL DEFAULT '',
     second_name VARCHAR(50) NOT NULL DEFAULT '',
     faculty_t INT(3) NOT NULL,
-    scientific_title INT(3) NOT NULL	);
+    scientific_title INT(3) NOT NULL);
 CREATE TABLE Speciality(
     id_speciality INT(3) PRIMARY KEY AUTO_INCREMENT,
     speciality_name VARCHAR(20) NOT NULL UNIQUE DEFAULT '');
@@ -122,3 +122,7 @@ INSERT INTO Teachers(code_teach,name_t,surname_t,second_name,faculty_t,scientifi
 (6721,'Микола','Довгунов','Валерійович',6,1),
 (2671,'Анастасія','Косяк','Олександрівна',7,2),
 (2781,'Анна','Копайенко','Станіславівна',8,5);
+
+CREATE PROCEDURE All_info_teachers()
+SELECT teachers.*, faculty.name_faculty, scientific_title.stitle_name FROM teachers INNER JOIN faculty ON teachers.faculty_t=faculty.id_faculty INNER JOIN scientific_title ON teachers.scientific_title=scientific_title.id_stitle;
+CALL All_info_teachers();
